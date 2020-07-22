@@ -1,10 +1,14 @@
-package com.basic;
+package com.basic.postwithobject;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -16,7 +20,9 @@ import static org.hamcrest.Matchers.equalTo;
 // then(): I need to check output
 
 
-public class PostMapTest {
+public class PostMapWithObjectTest {
+
+    PlaceAddModel placeAddModel;
 
     @BeforeClass
     public void setup() {
@@ -27,13 +33,30 @@ public class PostMapTest {
 
     @Test
     public void statusCodeTest() {
+        Map<String, Double> location = new HashMap<>();
+        location.put("lat", -33.8669710);
+        location.put("lng", 151.1958750);
+
+        List<String> types = new ArrayList<>();
+        types.add("shoe_store");
+
+        placeAddModel = new PlaceAddModel();
+        placeAddModel.setLocation(location);
+        placeAddModel.setTypes(types);
+        placeAddModel.setAccuracy(50);
+        placeAddModel.setName("Google Shoes!");
+        placeAddModel.setPhoneNumber("(02) 9374 4000");
+        placeAddModel.setWebsite("http://www.google.com.au");
+        placeAddModel.setLanguage("en-AU");
+
+
         given()
                 // .param() is the generic and can imply for 3 params (depends on param we can use generic or explicitly)
                 // .queryParam E.g. .../get?abc='123'
                 // .pathParam() E.g. .../123
                 // .formParam() E.g. for form submit
                 .queryParam("key", "abczaSyAFNxOzcDNEZ9")
-                .body("{"
+                /*.body("{"
                         + "\"location\": {"
                         + "\"lat\": -33.8669710,"
                         + "\"lng\": 151.1958750"
@@ -45,7 +68,8 @@ public class PostMapTest {
                         + "\"types\": [\"shoe_store\"],"
                         + "\"website\": \"http://www.google.com.au\","
                         + "\"language\": \"en-AU\","
-                        + "}")
+                        + "}")*/
+                .body(placeAddModel) //Jackson or Gson automatically convert Object to Json format
         .when()
                 .post("/place/add/json")
         .then()

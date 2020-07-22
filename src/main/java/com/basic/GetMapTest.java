@@ -61,6 +61,10 @@ public class GetMapTest {
     @Test
     public void responseTest1() {
         given()
+                // .param() is the generic and can imply for 3 params (depends on param we can use generic or explicitly)
+                // .queryParam E.g. .../get?abc='123'
+                // .pathParam() E.g. .../123
+                // .formParam() E.g. for form submit
                 .param("units", "imperial")
                 .param("origins", "Washington,DC")
                 .param("destinations", "New+York+City,NY")
