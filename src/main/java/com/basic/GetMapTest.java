@@ -69,7 +69,7 @@ public class GetMapTest {
                 .get("/distancematrix/json")
         .then()
                 .statusCode(200)
-                .contentType(ContentType.JSON)
+                .contentType(ContentType.JSON).and()
                 .body("row[0].element[0].distance.text", equalTo("255 mi"));
 
 
