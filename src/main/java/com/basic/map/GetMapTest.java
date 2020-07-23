@@ -1,4 +1,4 @@
-package com.basic;
+package com.basic.map;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

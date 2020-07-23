@@ -1,4 +1,4 @@
-package com.basic.postwithobject;
+package com.basic.map.postwithobject;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

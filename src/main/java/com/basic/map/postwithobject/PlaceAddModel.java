@@ -1,4 +1,4 @@
-package com.basic.postwithobject;
+package com.basic.map.postwithobject;
 
 import java.util.List;
 import java.util.Map;
