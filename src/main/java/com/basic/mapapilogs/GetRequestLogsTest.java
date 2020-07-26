@@ -1,4 +1,4 @@
-package com.basic.apilogs;
+package com.basic.mapapilogs;
 
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 // then(): I need to check output
 
 
-public class GetResponseLogsTest {
+public class GetRequestLogsTest {
 
     private String consumerKey = "djWeweudjkWEwejkwe";
     private String consumerSecret = "oe9eioieEweweekwli3323eejJKSIOIWOIWI23";
@@ -30,16 +30,15 @@ public class GetResponseLogsTest {
     @Test
     public void readTweetsTest() {
         given()
-                //.log() //add log
-                //.ifValidationFails() //print log if it is failed
+                .log() //add log
+                //.headers()
+                .ifValidationFails() //print log if it is failed
                 .auth()
                 .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
                 .queryParam("user_id", "username")
         .when()
                 .get("/update.json")
         .then()
-                .log() //add log for response in then section
-                .ifValidationFails() //print log if it is failed
                 .statusCode(200);
 
     }
