@@ -65,7 +65,7 @@ public class TwitterEndToEndTest {
                 .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
                 .pathParam("id", tweetId)
         .when()
-                .get("/destroy/{id}.json")
+                .post("/destroy/{id}.json")
         .then()
                 .statusCode(200);
 

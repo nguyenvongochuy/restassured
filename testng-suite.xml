@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Regression Test suite">
+
+    <test name = "All Tests">
+        <classes>
+            <class name = "com.basic.framework.testcases.UserTimeLineTest" />
+            <class name = "com.basic.framework.testcases.TwitterEndToEndFWTest" />
+        </classes>
+    </test>
+
+
+</suite>
